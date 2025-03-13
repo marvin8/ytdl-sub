@@ -395,8 +395,11 @@ class UploadDateVariableDefinitions(ABC):
         :description:
           The entry’s uploaded date, in YYYYMMDD format. If not present, return today’s date.
         """
+        release_date = StringDateMetadataVariable.from_entry(
+            metadata_key="release_date", default=self.epoch_date
+        ).as_date_variable()
         return StringDateMetadataVariable.from_entry(
-            metadata_key="upload_date", default=self.epoch_date
+            metadata_key="upload_date", default=release_date
         ).as_date_variable()
 
     @cached_property
