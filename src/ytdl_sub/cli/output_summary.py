@@ -70,6 +70,9 @@ def output_summary(subscriptions: List[Subscription]) -> None:
     width_num_entries_removed: int = len(_color_int(total_removed))
     width_num_entries: int = len(str(total_entries)) + 4  # aesthetics
 
+    if "__lt__" in dir(subscriptions[0]):
+        subscriptions.sort()
+
     # Build the summary
     for subscription in subscriptions:
         num_entries_added = _color_int(subscription.num_entries_added)

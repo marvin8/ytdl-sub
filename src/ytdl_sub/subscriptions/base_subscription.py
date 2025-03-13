@@ -237,3 +237,11 @@ class BaseSubscription(ABC):
         Subscription in yaml format
         """
         return self._preset_options.yaml
+
+    def __lt__(self, other) -> bool:
+        """
+        Returns
+        -------
+        A bool that is true if self is considered less than other.
+        """
+        return self.name < other.name
